@@ -3,3 +3,6 @@ spring:
     name: expert
   profiles:
     active: dev
+
+jwt:
+  secret.key: MySuperSecretKeyForJWTTokenGeneration2025SpringBootExpertApplication!
