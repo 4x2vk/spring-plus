@@ -38,6 +38,10 @@ public class TodoService {
                 weather,
                 user
         );
+        
+        // 할 일을 생성한 유저를 담당자로 자동 등록
+        newTodo.addManager(user);
+        
         Todo savedTodo = todoRepository.save(newTodo);
 
         return new TodoSaveResponse(
