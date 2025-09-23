@@ -1,9 +1,21 @@
-![Spring Framework](https://upload.wikimedia.org/wikipedia/commons/4/44/Spring_Framework_Logo_2018.svg)
+<div align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Spring_Framework_Logo_2018.svg" alt="Spring Framework" width="200"/>
+</div>
+
+![JDK 17](https://img.shields.io/badge/JDK-17-orange?logo=java&logoColor=white) 
+[![Spring Boot 3.3.3](https://img.shields.io/badge/Spring%20Boot-3.3.3-6DB33F?logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot) 
+![Spring Security](https://img.shields.io/badge/Spring%20Security-6DB33F?logo=springsecurity&logoColor=white) 
+![Spring Data JPA](https://img.shields.io/badge/Spring%20Data%20JPA-6DB33F?logo=spring&logoColor=white) 
+![QueryDSL](https://img.shields.io/badge/QueryDSL-5.0-blue?logo=java&logoColor=white) 
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white) 
+![JWT](https://img.shields.io/badge/JWT-0.11.5-blue?logo=jsonwebtokens&logoColor=white) 
+![BCrypt](https://img.shields.io/badge/BCrypt-0.10.2-blue?logo=java&logoColor=white)
+
 # Spring Plus
-A comprehensive Spring Boot application showcasing advanced enterprise features and problem-solving skills through systematic implementation of core Spring ecosystem technologies.
+A comprehensive SB application showcasing advanced enterprise features and problem-solving skills through systematic implementation of core Spring ecosystem technologies.
 
 ## Project Overview
-This repository demonstrates progressive mastery of Spring Boot concepts through 11 challenging implementation tasks. Starting from basic transaction management, the project evolves to include advanced features like QueryDSL optimization, Spring Security integration, and performance tuning.
+This repository demonstrates progressive mastery of concepts through 11 challenging implementation tasks. Starting from basic transaction management, the project evolves to include advanced features like QueryDSL optimization, Spring Security integration, and performance tuning.
 
 ### Completed Tasks
 | Level | Task Description |
@@ -22,21 +34,6 @@ This repository demonstrates progressive mastery of Spring Boot concepts through
 | **Level 3** | **Expert-Level Features** |
 | Lv 3.10 | Built advanced search API with QueryDSL projections and pagination |
 | Lv 3.11 | Implemented independent transaction processing for audit logging |
-
----
-
-## Built With
-![JDK 17](https://img.shields.io/badge/JDK-17-orange?logo=java&logoColor=white) 
-[![Spring Boot 3.3.3](https://img.shields.io/badge/Spring%20Boot-3.3.3-6DB33F?logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot) 
-![Spring Security](https://img.shields.io/badge/Spring%20Security-6DB33F?logo=springsecurity&logoColor=white) 
-![Spring Data JPA](https://img.shields.io/badge/Spring%20Data%20JPA-6DB33F?logo=spring&logoColor=white) 
-![QueryDSL](https://img.shields.io/badge/QueryDSL-5.0-blue?logo=java&logoColor=white) 
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white) 
-![Spring AOP](https://img.shields.io/badge/Spring%20AOP-6DB33F?logo=spring&logoColor=white) 
-![JWT](https://img.shields.io/badge/JWT-0.11.5-blue?logo=jsonwebtokens&logoColor=white) 
-![JUnit](https://img.shields.io/badge/JUnit-Platform-25A162?logo=junit5&logoColor=white) 
-![Mockito](https://img.shields.io/badge/Mockito-5.8.0-yellow?logo=java&logoColor=white) 
-![BCrypt](https://img.shields.io/badge/BCrypt-0.10.2-blue?logo=java&logoColor=white)
 
 ---
 
