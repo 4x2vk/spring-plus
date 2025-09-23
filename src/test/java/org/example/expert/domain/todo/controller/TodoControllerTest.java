@@ -1,5 +1,7 @@
 package org.example.expert.domain.todo.controller;
 
+import org.example.expert.config.GlobalExceptionHandler;
+import org.example.expert.config.TestConfig;
 import org.example.expert.domain.common.dto.AuthUser;
 import org.example.expert.domain.common.exception.InvalidRequestException;
 import org.example.expert.domain.todo.dto.response.TodoResponse;
@@ -9,8 +11,10 @@ import org.example.expert.domain.user.entity.User;
 import org.example.expert.domain.user.enums.UserRole;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -21,7 +25,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(TodoController.class)
+@SpringBootTest
+@AutoConfigureMockMvc
+@Import({TestConfig.class, GlobalExceptionHandler.class})
 class TodoControllerTest {
 
     @Autowired
@@ -35,7 +41,7 @@ class TodoControllerTest {
         // given
         long todoId = 1L;
         String title = "title";
-        AuthUser authUser = new AuthUser(1L, "email", UserRole.USER);
+        AuthUser authUser = new AuthUser(1L, "email", "nickname", UserRole.USER);
         User user = User.fromAuthUser(authUser);
         UserResponse userResponse = new UserResponse(user.getId(), user.getEmail());
         TodoResponse response = new TodoResponse(
@@ -55,7 +61,11 @@ class TodoControllerTest {
         mockMvc.perform(get("/todos/{todoId}", todoId))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(todoId))
-                .andExpect(jsonPath("$.title").value(title));
+                .andExpect(jsonPath("$.title").value(title))
+                .andExpect(jsonPath("$.contents").value("contents"))
+                .andExpect(jsonPath("$.weather").value("Sunny"))
+                .andExpect(jsonPath("$.user.id").value(user.getId()))
+                .andExpect(jsonPath("$.user.email").value(user.getEmail()));
     }
 
     @Test
@@ -69,9 +79,9 @@ class TodoControllerTest {
 
         // then
         mockMvc.perform(get("/todos/{todoId}", todoId))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.status").value(HttpStatus.OK.name()))
-                .andExpect(jsonPath("$.code").value(HttpStatus.OK.value()))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.status").value(HttpStatus.BAD_REQUEST.name()))
+                .andExpect(jsonPath("$.code").value(HttpStatus.BAD_REQUEST.value()))
                 .andExpect(jsonPath("$.message").value("Todo not found"));
     }
 }
