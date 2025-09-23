@@ -1,7 +1,7 @@
 package org.example.expert.domain.todo.controller;
 
 import org.example.expert.config.GlobalExceptionHandler;
-import org.example.expert.config.WebConfig;
+import org.example.expert.config.TestConfig;
 import org.example.expert.domain.common.dto.AuthUser;
 import org.example.expert.domain.common.exception.InvalidRequestException;
 import org.example.expert.domain.todo.dto.response.TodoResponse;
@@ -11,7 +11,8 @@ import org.example.expert.domain.user.entity.User;
 import org.example.expert.domain.user.enums.UserRole;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpStatus;
@@ -24,8 +25,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(TodoController.class)
-@Import({WebConfig.class, GlobalExceptionHandler.class})
+@SpringBootTest
+@AutoConfigureMockMvc
+@Import({TestConfig.class, GlobalExceptionHandler.class})
 class TodoControllerTest {
 
     @Autowired
@@ -59,7 +61,11 @@ class TodoControllerTest {
         mockMvc.perform(get("/todos/{todoId}", todoId))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(todoId))
-                .andExpect(jsonPath("$.title").value(title));
+                .andExpect(jsonPath("$.title").value(title))
+                .andExpect(jsonPath("$.contents").value("contents"))
+                .andExpect(jsonPath("$.weather").value("Sunny"))
+                .andExpect(jsonPath("$.user.id").value(user.getId()))
+                .andExpect(jsonPath("$.user.email").value(user.getEmail()));
     }
 
     @Test
